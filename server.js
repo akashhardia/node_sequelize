@@ -1,6 +1,12 @@
 const express = require('express');
 const app = express();
-const db = require('./db/db');
+const {
+    employeeRouter,
+    projectRouter
+} = require('./routes/index');
+
+app.use('/projects', projectRouter);
+app.use('/employees', employeeRouter);
 
 app.get('/', function(req, res) {
     res.send('home');
